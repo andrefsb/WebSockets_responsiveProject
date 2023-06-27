@@ -1,4 +1,5 @@
 import { atualizaTextoEditor } from "./documento.js";
+import { inserirLinkDocumento } from "./index.js";
 
 const socket = io();
 
@@ -15,5 +16,6 @@ function emitirTextoEditor(dados){
 socket.on("texto_editor_clientes", (texto)=> {
   atualizaTextoEditor(texto);
 })
+
 
 export { emitirTextoEditor, selecionarDocumento };
