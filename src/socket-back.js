@@ -1,10 +1,10 @@
-import { adicionarDocumento, atualizaDocumento, encontrarDocumento, obterDocumentos } from "./documentosDb.js";
+import { adicionarDocumento, atualizaDocumento, encontrarDocumento, excluirDocumento, obterDocumentos } from "./documentosDb.js";
 import io from "./servidor.js";
 
 io.on("connection", (socket) => {
     socket.on("obter_documentos", async (devolverDocumentos) => {
       const documentos = await obterDocumentos();
-  
+
       devolverDocumentos(documentos);
     });
 
@@ -39,6 +39,10 @@ io.on("connection", (socket) => {
         if (atualizacao.modifiedCount) {
             socket.to(nomeDocumento).emit("texto_editor_clientes", texto);
         }
+    })
+
+    socket.on("excluir_documento", async () => {
+        const resultado = await excluirDocumento(nome);
     })
 
   });
