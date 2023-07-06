@@ -1,12 +1,12 @@
-import { emitirCadastrarUsuario } from "./socket-front-cadastr.js";
+import { emitirCadastrarUsuario } from "./socket-front-cadastro.js";
 
 const form = document.getElementById("form-cadastro");
 
 form.addEventListener("submit", (evento)=>{
     evento.preventDefault();
 
-    const usuario = form["input-usuario"].value;
+    const nome = form["input-usuario"].value;
     const senha = form["input-senha"].value;
 
-    emitirCadastrarUsuario({usuario, senha});
+    emitirCadastrarUsuario({nome, senha});
 })
