@@ -3,7 +3,11 @@ import registrarEventosCadastro from "./registrarEventos/cadastro.js";
 import registrarEventosDocumento from "./registrarEventos/documento.js";
 import registrarEventosInicio from "./registrarEventos/inicio.js";
 import registrarEventosLogin from "./registrarEventos/login.js";
+import autorizarUsuario from "./middlewares/autorizarUsuario.js";
 import io from "./servidor.js";
+
+
+io.use(autorizarUsuario);
 
 io.on("connection", (socket) => {
   registrarEventosCadastro (socket, io);
