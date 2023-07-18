@@ -20,6 +20,11 @@ function selecionarDocumento(dadosEntrada) {
   });
 }
 
+socket.on("usuario_ja_no_documento", ()=>{
+  alert("Document already in use on another page.");
+  window.location.href="/";
+});
+
 socket.on("usuarios_no_documento", atualizarInterfacesUsuarios)
 
 function emitirTextoEditor(dados) {
